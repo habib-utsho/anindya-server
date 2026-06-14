@@ -6,7 +6,7 @@ import catchAsync from "../../../lib/catchAsync";
 
 
 const createUser: RequestHandler = catchAsync(async (req: Request, res: Response) => {
-    const result = await userServices.createUser();
+    const result = await userServices.createUser(req.body);
 
     sendResponse(res, StatusCodes.CREATED, {
         success: true,

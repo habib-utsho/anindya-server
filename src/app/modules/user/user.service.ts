@@ -1,6 +1,6 @@
 
 
-const createUser = async () => {
+const createUser = async (payload: any) => {
     return {};
 }
 const getUsers = async () => {

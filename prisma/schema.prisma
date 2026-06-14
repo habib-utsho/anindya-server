@@ -21,9 +21,15 @@ model Role {
   users       User[]
 }
 
+
 enum UserStatus {
   active
   inactive
+}
+enum Gender {
+  Men
+  Women
+  Unisex
 }
 
 model User {
@@ -38,4 +44,19 @@ model User {
   createdAt             DateTime   @default(now())
   updatedAt             DateTime   @updatedAt
   role                  Role       @relation(fields: [role_id], references: [id])
+  profile               Profile?
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  user_id   String   @unique
+  firstName String
+  lastName  String
+  phone     String?
+  date_of_birth DateTime?
+  avatar_url String?
+  gender    Gender?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [user_id], references: [id])
 }
