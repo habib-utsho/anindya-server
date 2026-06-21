@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { userController } from "./user.controller";
+import zodValidateHandler from "../../middleware/zodValidateHandler";
+import { createUserZodSchema } from "./user.validation";
 
 
 const router = Router()
 
-router.post('/', userController.createUser)
+router.post('/', zodValidateHandler(createUserZodSchema), userController.createUser)
 router.get('/', userController.getUsers)
 
 

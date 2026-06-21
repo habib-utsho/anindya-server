@@ -6,20 +6,13 @@ import { roleServices } from "./role.service";
 
 
 const createRole: RequestHandler = catchAsync(async (req: Request, res: Response) => {
-    try {
-        const result = await roleServices.createRole(req.body);
-        sendResponse(res, StatusCodes.CREATED, {
-            success: true,
-            message: 'Role created successfully',
-            data: result
-        });
-    } catch (error: any) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
-            success: false,
-            message: error?.name || 'Failed to create role',
-            error: error instanceof Error ? error.message : 'Unknown error'
-        });
-    }
+    const result = await roleServices.createRole(req.body);
+    sendResponse(res, StatusCodes.CREATED, {
+        success: true,
+        message: 'Role created successfully',
+        data: result
+    });
+
 })
 
 const getRoles: RequestHandler = catchAsync(async (req: Request, res: Response) => {

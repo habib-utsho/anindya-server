@@ -17,7 +17,6 @@ const createUser = async (payload: any) => {
         throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, 'Password hashing failed');
     }
 
-    console.log(hashedPassword, 'hashedPassword');
 
     const userData = {
         email: payload.email,

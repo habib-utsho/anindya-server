@@ -53,7 +53,7 @@ model Profile {
   user_id   String   @unique
   firstName String
   lastName  String
-  phone     String?
+  phone     String? @unique 
   date_of_birth DateTime?
   avatar_url String?
   gender    Gender?
